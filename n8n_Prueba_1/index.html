@@ -34,6 +34,14 @@
   <script>
     document.getElementById("triggerBtn").addEventListener("click", async () => {
       const webhookUrl = "https://TU_WEBHOOK_URL_DE_N8N"; // 👈 reemplazá esta línea
+
+      // Ejemplo de datos que queremos enviar al flujo
+      const data = {
+        fecha: new Date().toISOString(),
+        nombre: "Maxi",
+        mensaje: "¡Prueba desde n8n!"
+      };
+      
       try {
         const response = await fetch(webhookUrl, { method: "POST" });
         if (response.ok) {
