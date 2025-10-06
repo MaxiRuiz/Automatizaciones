@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Disparar automatización n8n</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disparar Automatización n8n</title>
   <style>
     body {
       font-family: sans-serif;
       display: flex;
-      height: 100vh;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
       background-color: #f5f5f5;
     }
+
     button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
       padding: 1rem 2rem;
       font-size: 1.2rem;
-      border-radius: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #009879;
+      color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
+
     button:hover {
-      background-color: #45a049;
+      background-color: #007a61;
     }
   </style>
 </head>
 <body>
-  <button id="triggerBtn">Disparar automatización</button>
+  <button id="triggerBtn">Disparar Automatización</button>
 
   <script>
     document.getElementById("triggerBtn").addEventListener("click", async () => {
-      const webhookUrl = "https://TU_WEBHOOK_URL_DE_N8N"; // 👈 reemplazá esta línea
+      // 🔧 Reemplazá esta URL con tu webhook de n8n
+      const webhookUrl = "https://TU_WEBHOOK_DE_N8N";
 
       // Ejemplo de datos que queremos enviar al flujo
       const data = {
@@ -41,13 +44,20 @@
         nombre: "Maxi",
         mensaje: "¡Prueba desde n8n!"
       };
-      
+
       try {
-        const response = await fetch(webhookUrl, { method: "POST" });
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
         if (response.ok) {
-          alert("✅ Automatización enviada correctamente.");
+          alert("✅ Automatización ejecutada correctamente");
         } else {
-          alert("⚠️ Error al enviar: " + response.statusText);
+          alert("⚠️ Error al ejecutar la automatización: " + response.statusText);
         }
       } catch (error) {
         alert("❌ Error de conexión: " + error.message);
