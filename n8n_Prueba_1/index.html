@@ -36,13 +36,13 @@
   <script>
     document.getElementById("triggerBtn").addEventListener("click", async () => {
       // 🔧 Reemplazá esta URL con tu webhook de n8n
-      const webhookUrl = "https://TU_WEBHOOK_DE_N8N";
+      const webhookUrl = "http://localhost:5678/webhook/0a7552a3-f92e-461f-a876-39d032779957";
 
       // Ejemplo de datos que queremos enviar al flujo
       const data = {
-        fecha: new Date().toISOString(),
-        nombre: "Maxi",
-        mensaje: "¡Prueba desde n8n!"
+        Fecha: new Date().toISOString(),
+        Nombre: "Maxi",
+        Mensaje: "¡Prueba desde n8n!"
       };
 
       try {
